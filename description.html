@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ZBra Dataset</title>
+    <link rel="stylesheet" href="static/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <!-- 顶部 Logo -->
+    <header class="logo-container">
+        <img src="static/logo.png" alt="Logo" class="logo-img">
+    </header>
+
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="description.html" class="active">DESCRIPTION</a></li>
+            <li><a href="download.html">DOWNLOAD</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+        </ul>
+    </nav>
+
+    <!-- 主体内容 -->
+    <main class="content">
+        <h1>ZBra Dataset Description</h1>
+        <img src="static/ZBra_overview.png" alt="MEEtBrain" class="contain-img">
+        <h2>Stimuli</h2>
+        <p>
+            A novel framework, named <b>MEEtBrain</b>, was proposed to collect multi-modal brain signals induced by AI-generated music for the analysis
+            of human affective states, shown in figure above. First, a
+            music library was constructed as emotion stimuli, where music clips
+            are automatically generated on a large scale by a generative AI
+            model (<a href="https://github.com/facebookresearch/audiocraft/blob/main/docs/MUSICGEN.md" target="_blank">MusicGen</a>). 
+            For the automatic generation, a set of prompts was designed following the Russell's Valence-Arousal
+            circumplex and considering personalized interests in music. 
+            All the obtained music clips have been evaluated by recruiting volunteers to rate, ensuring
+            the matching between each music clip and its labeled emotion state.
+        </p>
+        <img src="static/templates.png" alt="Templates" class="contain-img">
+        <p>
+            There is a total of 101 music clips, each lasting 30 seconds.
+            The music clips are categorized into four emotional states based on valence and arousal and the categories are kept roughly balanced.
+        </p>
+        <h2>Data Collection</h2>
+        <p>
+            The whole data collection process is shown in the figure below.
+            The experimental protocol required each participant to complete 40 trials, with each trial consisting of:
+            <ul>
+                <li>a 5-second preparation period,</li>
+                <li>a 60-second music listening phase,</li>
+                <li>a 25-second rating period and rest interval.</li>
+            </ul>
+        </p>
+        <img src="static/collection.png" alt="Data Collection" class="contain-img">
+
+        <h2>Subjects</h2>
+        <p>44 Chinese subjects (21 males and 23 females) aged 22-38 years participated in the experiment.
+        To protect user privacy, each participant was anonymized and assigned a unique identifer (sub_1, sub_2, ..., sub_44).
+        </p>
+        <p><b>Notice</b>: Due to technical reasons, only half of the data of the three subjects were saved.</p>
+
+        <h2> Data Preprocess</h2>
+        <h3>1) EEG</h3>
+        We only performed basic preprocessing for EEG data in the public dataset, including: resample to 250 Hz, bandpass filter (0.1 - 45 Hz).
+        Therefore, the EEG data of one trial is a 2 x 15000 array, where the first row is Fp1 and the second row is Fp2 referenced to the left earlobe A1 according to the international 10-20 system.
+        <b>We did not apply a 50 Hz notch filter.</b>
+        <h3>2) fNIRS</h3>
+        The fNIRS data was used to calculate the oxyhemoglobin (HbO), deoxyhemoglobin (HbR) and total hemoglobin concentration changes using the modified Beer-Lambert law.
+        And then baseline correction and bandpass filtering (0.01 - 0.1 Hz) were applied to the HbO, HbR and HbT data.
+        We also applied a 0.5-4 Hz band-pass filter to optical density changes to obtain the signals similar to the photoplethysmogram (PPG) signal, which contains heart rate information.
+        <b>The details of fNIRS processing can be found in 'fnirs_process.py'</b>
+
+        <h2>Dataset Summary</h2>
+        <p>
+            ZBra dataset contains 44 subjects' data (preprocessed EEG, fNIRS, PPG), which are recorded while listening to AI-generated music clips.
+            The dataset is organized in a directory structure as follows:
+        </p>
+        <p>
+            1) <b>'music' direactory:</b> <br>
+            There are four subdirectories, each corresponding to one of the four emotional states (HAHV, HALV, LAHV, LALV).
+            The music ratings information is stored in a JSON file named <b>'ratings.json'</b> in this directory, containing the mean rating scores for each music clip. <br><br>
+            2) <b>'eeg' / 'fnirs' / 'ppg' directory:</b><br>
+            There are 44 subdirectories, each containing the EEG, fNIRS, and PPG data for an individual subject. Within each subdirectory, you will find a CSV file named <b>'label.csv'</b>, which stores the rating scores for every trial. <br><br>
+            3) <b>'sub_info.csv':</b> <br>
+            This file contains the information of all subjects, including 'ID', 'GENDER' and 'AGE'. <br><br>
+            <b>Notice:</b> 44 subjects' data are stored in two directories, 'sub_1_20' and 'sub_21_44', due to the large size of the dataset.
+        </p>
+
+        <h2>Download</h2>
+        <a href="download.html">Download ZBra Dataset</a>
+
+        <h2>Reference</h2>
+        <p>If you feel that the dataset is helpful for your study, please add the following reference to your publications.</p> <br>
+
+        <p>[1] Sha Zhao, Song Yi, Yangxuan Zhou, Jiadong Pan, Jiquan Wang, Jie Xia, Shijian Li, Shurong Dong, and Gang Pan. 2025. Wearable Music2Emotion : Assessing Emotions Induced by AI-Generated Music through Portable 
+            EEG-fNIRS Fusion. In <em>Proceedings of the 33rd ACM International Conference 
+            on Multimedia (MM '25), October 27-31, 2025, Dublin, Ireland</em>. ACM, New York, NY, USA, 10 pages. https://doi.org/10.1145/3746027.3755270</p>
+    </main>
+</body>
+</html>

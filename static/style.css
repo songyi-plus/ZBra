@@ -1,0 +1,150 @@
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.content h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: #4228d3;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+}
+
+.highlight-text {
+    color: #b3460b;
+    font-size: 20px;
+    background-color: #f9f2f4; /* 可选：加个背景 */
+    padding: 6px;
+    display: inline-block;
+}
+
+body {
+    font-family: Calibri, sans-serif;
+    line-height: 2;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #ecefef;
+}
+
+/* A4 宽度主容器 */
+.content {
+    width: 210mm;
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+/* Logo */
+.logo-container {
+    width: 210mm;
+    height: 40mm;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-top: 20px;
+    background-color: #a6d6e7;
+}
+
+.logo-img {
+    width: 210mm;
+    height: auto;
+    max-height: 40mm;
+    object-fit: fill;
+}
+
+/* 导航栏 */
+.navbar {
+    width: 210mm;
+    background-color: #333;
+    margin-top: 10px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+.navbar li {
+    flex: 1;
+    text-align: center;
+}
+
+.navbar a {
+    display: block;
+    padding: 12px;
+    color: #fff;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    background-color: #555;
+}
+
+/* 内容图像 */
+.contain-img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
+}
+
+.content a {
+    color: #0066cc;           /* 普通状态颜色 */
+    font-weight: bold;        /* 加粗（可选） */
+}
+
+
+/* 数据集表格 */
+.dataset-table {
+    width: 210mm;
+    margin: 20px auto;
+    font-size: 15px;
+}
+
+.table-caption {
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.dataset-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.dataset-table th,
+.dataset-table td {
+    border: 0px solid #ccc;
+    padding: 4px 8px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.dataset-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 无序列表*/
+.content ul {
+    margin: 0 0 1em 0;
+    padding-left: 1.5em;
+}
+
+.content li {
+    margin-bottom: 0.5em;
+}
