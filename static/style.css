@@ -32,9 +32,10 @@ body {
     background-color: #ecefef;
 }
 
-/* A4 宽度主容器 */
+/* 主容器宽度用 px 替换 210mm，210mm ≈ 794px */
 .content {
-    width: 210mm;
+    width: 800px;              /* 约等于 210mm */
+    max-width: 98vw;           /* 保证小屏幕下不会溢出 */
     background-color: #fff;
     padding: 20px;
     margin: 20px 0;
@@ -43,8 +44,9 @@ body {
 
 /* Logo */
 .logo-container {
-    width: 210mm;
-    height: 40mm;
+    width: 800px;
+    max-width: 98vw;
+    height: 151px;             /* 40mm ≈ 151px */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,15 +56,17 @@ body {
 }
 
 .logo-img {
-    width: 210mm;
+    width: 800px;
+    max-width: 98vw;
     height: auto;
-    max-height: 40mm;
+    max-height: 151px;
     object-fit: fill;
 }
 
 /* 导航栏 */
 .navbar {
-    width: 210mm;
+    width: 800px;
+    max-width: 98vw;
     background-color: #333;
     margin-top: 10px;
 }
@@ -108,7 +112,8 @@ body {
 
 /* 数据集表格 */
 .dataset-table {
-    width: 210mm;
+    width: 800px;
+    max-width: 98vw;
     margin: 20px auto;
     font-size: 15px;
 }
